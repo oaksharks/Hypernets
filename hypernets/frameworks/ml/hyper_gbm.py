@@ -76,11 +76,11 @@ class HyperGBMModel():
 
         cache_dir = os.path.expanduser(f'{cache_dir}')
         if not os.path.exists(cache_dir):
-            os.makedirs(cache_dir)
+            os.makedirs(cache_dir, exist_ok=True)
         else:
             if clear_cache:
                 shutil.rmtree(cache_dir)
-                os.makedirs(cache_dir)
+                os.makedirs(cache_dir, exist_ok=True)
         return cache_dir
 
     def get_X_filepath(self, X):

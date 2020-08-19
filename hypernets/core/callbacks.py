@@ -53,7 +53,7 @@ class FileLoggingCallback(Callback):
         running_dir = f'exp_{searcher.__class__.__name__}_{datetime.datetime.now().__format__("%m%d-%H%M%S")}'
         output_path = os.path.expanduser(f'{log_dir}/{running_dir}/')
         if not os.path.exists(output_path):
-            os.makedirs(output_path)
+            os.makedirs(output_path, exist_ok=True)
         return output_path
 
     def on_build_estimator(self, hyper_model, space, estimator, trail_no):

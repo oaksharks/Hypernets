@@ -158,7 +158,7 @@ class DiskTrailStore(TrailStore):
             home_dir = home_dir[:-1]
         home_dir = os.path.expanduser(home_dir)
         if not os.path.exists(home_dir):
-            os.makedirs(home_dir)
+            os.makedirs(home_dir, exist_ok=True)
         return home_dir
 
     def _prepare_output_dir(self, log_dir, searcher):
@@ -170,7 +170,7 @@ class DiskTrailStore(TrailStore):
         running_dir = f'exp_{searcher.__class__.__name__}_{datetime.datetime.now().__format__("%m%d-%H%M%S")}'
         output_path = os.path.expanduser(f'{log_dir}/{running_dir}/')
         if not os.path.exists(output_path):
-            os.makedirs(output_path)
+            os.makedirs(output_path, exist_ok=True)
         return output_path
 
     def load(self):
@@ -198,7 +198,7 @@ class DiskTrailStore(TrailStore):
     def _put(self, dataset_id, trail):
         path = self.get_trail_path(dataset_id, trail.space_sample)
         if not os.path.exists(os.path.dirname(path)):
-            os.makedirs(os.path.dirname(path))
+            os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, 'wb') as f:
             temp = Trail(space_sample=None, trail_no=trail.trail_no, reward=trail.reward, elapsed=trail.elapsed)
             temp.space_sample_vectors = trail.space_sample.vectors
