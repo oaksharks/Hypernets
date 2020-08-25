@@ -8,7 +8,7 @@ from sklearn.utils import column_or_1d
 from sklearn.preprocessing import LabelEncoder
 import numpy as np
 from sklearn.metrics import roc_auc_score, mean_squared_log_error, accuracy_score, \
-    mean_squared_error, mean_absolute_error, r2_score, precision_score, recall_score, f1_score
+    mean_squared_error, mean_absolute_error, r2_score, precision_score, recall_score, f1_score, log_loss
 
 # class DtypeCastTransformer(TransformerMixin, BaseEstimator):
 #     def __init__(self):
